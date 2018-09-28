@@ -380,11 +380,15 @@ register_commands (void)
 
 gboolean force_use_unar (void)
 {
+	/*
+		[preferences.h]
+		ENGRAMPA_SCHEMA_GENERAL = "org.mate.engrampa.general"
+	 	PREF_GENERAL_FORCE_USE_UNAR = "force-use-unar"
+	*/
 	GSettings *settings;
-	settings = g_settings_new ("org.mate.engrampa.general");
-	/*settings = g_settings_new (ENGRAMPA_SCHEMA_GENERAL);*/
+	settings = g_settings_new (ENGRAMPA_SCHEMA_GENERAL);
 
-	if (g_settings_get_boolean (settings, "force-use-unar") && is_program_in_path ("unar") && is_program_in_path ("lsar")) {
+	if (g_settings_get_boolean (settings, PREF_GENERAL_FORCE_USE_UNAR) && is_program_in_path ("unar") && is_program_in_path ("lsar")) {
 		g_object_unref (settings);
 		return TRUE;
 	} else {
