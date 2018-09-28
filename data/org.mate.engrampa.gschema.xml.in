@@ -131,6 +131,11 @@
       <summary>Adds 'unar' support over .zip archives.</summary>
       <description>It enables the ability to support 'unar' over .zip archives.</description>
     </key>
+    <key name="force-use-unar" type="b">
+      <default>false</default>
+      <summary>Force use unar.</summary>
+      <description>Force use unar to open zip archives.</description>
+    </key>
   </schema>
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.mate.engrampa.dialogs" path="/org/mate/engrampa/dialogs/">
     <child name="extract" schema="org.mate.engrampa.dialogs.extract"/>

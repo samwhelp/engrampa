@@ -380,13 +380,15 @@ register_commands (void)
 
 gboolean force_use_unar (void)
 {
-	FILE* fp = fopen("/tmp/force-use-unar", "r");
-	if (fp) {
-		// file exists, then force use unar.
-		fclose(fp);
+	GSettings *settings;
+	settings = g_settings_new ("org.mate.engrampa.general");
+	/*settings = g_settings_new (ENGRAMPA_SCHEMA_GENERAL);*/
+
+	if (g_settings_get_boolean (settings, "force-use-unar") && is_program_in_path ("unar") && is_program_in_path ("lsar")) {
+		g_object_unref (settings);
 		return TRUE;
 	} else {
-		// file doesn't exist
+		g_object_unref (settings);
 		return FALSE;
 	}
 }
